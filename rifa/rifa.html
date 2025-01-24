@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rifa Perfume Santal 33</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #f8f9fa, #eaeaea);
+            color: #333;
+        }
+        header {
+            background-color: #6c757d;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .raffle-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .raffle-description {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .raffle-image {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .raffle-image img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .image-caption {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+        }
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+        .number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .number:hover {
+            background-color: #adb5bd;
+            color: white;
+        }
+        .number.selected {
+            background-color: #6c757d;
+            color: white;
+        }
+        .cta {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .cta button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            color: white;
+            background-color: #6c757d;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .cta button:hover {
+            background-color: #495057;
+        }
+        .account-info, .contact-form {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .account-info h2, .contact-form h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .account-info p {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+        }
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .contact-form input, .contact-form button {
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        .contact-form button {
+            background-color: #6c757d;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #495057;
+        }
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 2rem;
+        }
+        .share-buttons a {
+            text-decoration: none;
+            color: white;
+            background-color: #6c757d;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .share-buttons a:hover {
+            background-color: #495057;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Rifa de Perfume: Santal 33</h1>
+    </header>
+    <div class="container">
+        <div class="raffle-title">¡Gana el exclusivo perfume Santal 33!</div>
+        <div class="raffle-description">
+            Participa en nuestra rifa y llévate a casa este lujoso perfume. Solo <strong>50 números</strong> disponibles.
+        </div>
+        <div class="raffle-image">
+            <img src="image.png" alt="Perfume Santal 33">
+            <div class="image-caption">by OLIVERPERFUMERIA</div>
+        </div>
+        <div class="numbers-grid" id="numbers-grid">
+            <!-- Los números se generarán dinámicamente -->
+        </div>
+        <div class="cta">
+            <button id="confirm-button">¡Participar ahora!</button>
+        </div>
+        <div class="account-info">
+            <h2>Información para Depósitos</h2>
+            <p><strong>Número de Cuenta:</strong> 1234-5678-9012</p>
+            <p><strong>Cédula:</strong> 001-1234567-8</p>
+        </div>
+        <div class="contact-form">
+            <h2>Formulario de Contacto</h2>
+            <form>
+                <input type="text" placeholder="Nombre completo" required>
+                <input type="email" placeholder="Correo electrónico" required>
+                <input type="tel" placeholder="Teléfono" required>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+        <div class="share-buttons">
+            <a href="https://wa.me/?text=¡Participa en esta increíble rifa del perfume Santal 33! Visítanos para más información." target="_blank">WhatsApp</a>
+            <a href="https://facebook.com" target="_blank">Facebook</a>
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+        </div>
+    </div>
+    <script>
+        const numbersGrid = document.getElementById('numbers-grid');
+        const confirmButton = document.getElementById('confirm-button');
+        let selectedNumber = null;
+
+        // Generar números dinámicamente
+        for (let i = 1; i <= 50; i++) {
+            const numberDiv = document.createElement('div');
+            numberDiv.className = 'number';
+            numberDiv.textContent = i;
+            numberDiv.addEventListener('click', () => {
+                document.querySelectorAll('.number').forEach(num => num.classList.remove('selected'));
+                numberDiv.classList.add('selected');
+                selectedNumber = i;
+            });
+            numbersGrid.appendChild(numberDiv);
+        }
+
+        // Confirmar número seleccionado
+        confirmButton.addEventListener('click', () => {
+            if (selectedNumber) {
+                alert(`Has seleccionado el número ${selectedNumber}. Realiza tu pago para confirmar tu participación.`);
+            } else {
+                alert('Por favor, selecciona un número antes de continuar.');
+            }
+        });
+    </script>
+</body>
+</html>
